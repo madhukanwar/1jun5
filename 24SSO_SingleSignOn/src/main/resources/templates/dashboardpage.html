@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+
+
+<br><br><br><br><br>
+<h1>Welcome to mr <span style="color:red;" th:text="*{name}"></span>
+    you can use<span style="color:red;" th:text="*{auth}"></span></h1>
+
+<!--This use for csrf-->
+
+<form th:action="@{/mylogout}" method="POST">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input type="submit" value="Logout"/>
+</form>
+
+
+<!--
+<div sec:authorize="hasRole('ROLE_SUPER')">This content is only super admin.</div>
+<div sec:authorize="hasRole('ROLE_ADMIN')">This content is only shown to administrators.</div>
+<div sec:authorize="hasRole('ROLE_USER')">This content is only shown to users.</div>
+
+Logged user: <span sec:authentication="name">Bob</span>
+Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+
+
+<div sec:authorize="hasRole('SUPER')">Text visible to super admin.</div>
+<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+<div sec:authorize="hasRole('USER')">Text visible to user.</div>
+-->
+</body>
+</html>
